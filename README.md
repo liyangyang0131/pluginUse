@@ -15,3 +15,13 @@
   3组相同，去掉2组
   修改ueditor.all.js,将COUNT = 9修改为COUNT = 3
 
+<!-- 注意点 -->
+<style lang='scss'>
+
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+</style>
+  The prefixed ~ tells Sass to look in the node_modules directory.
+  前缀~告诉Sass在node_modules目录中查找。
+

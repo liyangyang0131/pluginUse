@@ -44,6 +44,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/css/common.scss';
 .example {
+  padding-top:20px;
 }
 </style>
