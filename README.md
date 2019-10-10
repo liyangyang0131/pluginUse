@@ -25,3 +25,8 @@
   The prefixed ~ tells Sass to look in the node_modules directory.
   前缀~告诉Sass在node_modules目录中查找。
 
+fullcalendar插件修改
+
+1.日历当天事件超过条数时，将显示超过事件的条数去掉 例如：+2 更多
+2.事件前时间去掉 例如：23：00 aaa
+3.

@@ -1,74 +1,122 @@
 <template>
   <section class="fullcalendar">
-
-    <ul class="step clearfix">
-      <li class="item">1</li>
-      <li class="triangle"></li>
-      <li class="item">2</li>
-      <li class="triangle"></li>
-      <li class="item">3</li>
-      <li class="triangle"></li>
-    </ul>
-
     <!-- dayGridMonth,timeGridWeek,timeGridDay,listWeek -->
     <FullCalendar ref="fullCalendar"
+      :events="monthData"
       defaultView="dayGridMonth"
       :header="{
         left: 'prev',
         center: 'title',
         right: 'next'
-      }" 
-
-      :plugins="calendarPlugins" />
+      }"
+      locale="zhCn"
+      timeFormat='YYYY/MM'
+      eventLimit = '3'
+      eventLimitText="更多"
+      height='600'
+      :plugins="calendarPlugins"
+      @dateClick="handleDateClick"
+      @eventClick="handleEventClick"
+       />
   </section>
 </template>
 
 <script>
-import FullCalendar from '@/assets/lib/@fullcalendar/vue'
-import dayGridPlugin from '@/assets/lib/@fullcalendar/daygrid'
+import FullCalendar from '../../static/@fullcalendar/vue'
+import dayGridPlugin from '../../static/@fullcalendar/daygrid'
+import zhCn from '../../static/@fullcalendar/core/locales/zh-cn.js'
+
 export default {
     name:'Fullcalendar',
     components:{FullCalendar},
     data(){
         return{
-            calendarPlugins: [ dayGridPlugin ]
+            calendarPlugins: [ dayGridPlugin ],
+            monthData: [
+              {
+                title: "eeeeeeeee", // 事件内容
+                start: "2019-09-11", // 事件开始时间
+                end: "2019-09-11", // 事件结束时间
+                classNames:['red']
+                // backgroundColor: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+              },
+              {
+                title: "aaa", // 事件内容
+                start: "2019-09-11", // 事件开始时间
+                end: "2019-09-11", // 事件结束时间
+                // cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+              },
+              {
+                title: "bbb", // 事件内容
+                start: "2019-09-11", // 事件开始时间
+                end: "2019-09-11", // 事件结束时间
+                // cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+              },
+              {
+                title: "ccc", // 事件内容
+                start: "2019-09-11", // 事件开始时间
+                end: "2019-09-11", // 事件结束时间
+                // cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+              },
+              {
+                title: "ddd", // 事件内容
+                start: "2019-09-11", // 事件开始时间
+                end: "2019-09-11", // 事件结束时间
+                // cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+              },
+              {
+                title: "sssss",
+                start: "2019-09-25",
+                end: "2019-09-25",
+                // cssClass: "blue"
+              },
+              {
+                title: "dddddddd",
+                start: "2019-09-09",
+                end: "2019-09-09",
+                // cssClass: "blue"
+              },
+              {
+                title: "cccccc",
+                start: "2019-09-20",
+                end: "2019-09-20",
+                // cssClass: "red"
+              },
+              {
+                title: "aaaaaa",
+                start: "2019-09-01",
+                end: "2019-09-01",
+                // cssClass: "red"
+              },
+              {
+                title: "bbbbbb",
+                start: "2019-09-05",
+                end: "2019-09-05",
+                // cssClass: "blue"
+              }
+            ],
         }
     },
     methods:{
-
+      handleDateClick(arg) {
+        alert(arg.date)
+      },
+      handleEventClick({el,event,jsEvent,view}){
+        console.log(event);
+      }
     },
 
 }
 </script>
 
 <style lang="scss">
-@import '../assets/lib/@fullcalendar/core/main.css';
-@import '../assets/lib/@fullcalendar/daygrid/main.css';
+@import '../../static/@fullcalendar/core/main.css';
+@import '../../static/@fullcalendar/daygrid/main.css';
 .fullcalendar{
   padding-top:20px;
-  .step{
-    text-align: center;
-    color:#fff;
-    line-height:40px;
-    font-weight: bold;
-    margin-bottom:30px;
-    .item{
-      float:left;
-      width:40px;
-      height:40px;
-      background:blue;
-      border-radius:50%;
-      margin-right:10px;
-    }
-    .triangle{
-      margin-top:10px;
-      float:left;
-      width:0;
-      height:0;
-      border-width:10px;
-      border-style:solid;
-      border-color:transparent transparent transparent #ccc;
-    }
+  .red{
+    background-color:red;
+    border-color:red;
   }
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-  <section class="fullcalendar">
-    <FullCalendar
+  <section class="vueFullcalendar">
+    <FullCalendar  id="fullcalendar"
       :events="monthData"
-      class="test-fc"
-      locale="fr"
       :config="config"
       @view-render="viewRender"
       @event-selected="eventClick"
@@ -14,107 +12,107 @@
 </template>
 
 <script>
-import FullCalendar from "@/assets/lib/vue-full-calendar/components/FullCalendar";
+import FullCalendar from "../../static/vue-full-calendar/components/FullCalendar";
 import moment from "moment";
-import "@/assets/lib/fullcalendar/dist/fullcalendar.css";
+import "../../static/fullcalendar/dist/fullcalendar.css";
+import $ from 'jquery'
 
 export default {
   name: "VueFullcalendar",
   components: { FullCalendar },
   data() {
     return {
-      monthData: [
-        {
-          title: "eeeeeeeee", // 事件内容
-          start: "2019-9-11", // 事件开始时间
-          end: "2019-9-11", // 事件结束时间
-          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
-        },
-        {
-          title: "aaa", // 事件内容
-          start: "2019-9-11", // 事件开始时间
-          end: "2019-9-11", // 事件结束时间
-          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
-        },
-        {
-          title: "bbb", // 事件内容
-          start: "2019-9-11", // 事件开始时间
-          end: "2019-9-11", // 事件结束时间
-          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
-        },
-        {
-          title: "ccc", // 事件内容
-          start: "2019-9-11", // 事件开始时间
-          end: "2019-9-11", // 事件结束时间
-          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
-        },
-        // {
-        //   title: "ddd", // 事件内容
-        //   start: "2019-9-11", // 事件开始时间
-        //   end: "2019-9-11", // 事件结束时间
-        //   cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
-        // },
-        {
-          title: "sssss",
-          start: "2019-9-25",
-          end: "2019-9-25",
-          cssClass: "blue"
-        },
-        {
-          title: "dddddddd",
-          start: "2019-9-09",
-          end: "2019-9-09",
-          cssClass: "blue"
-        },
-        {
-          title: "cccccc",
-          start: "2019-9-20",
-          end: "2019-9-20",
-          cssClass: "red"
-        },
-        {
-          title: "aaaaaa",
-          start: "2019-9-01",
-          end: "2019-9-01",
-          cssClass: "red"
-        },
-        {
-          title: "bbbbbb",
-          start: "2019-9-05",
-          end: "2019-9-05",
-          cssClass: "blue"
-        }
-      ],
       config: {
         firstDay: 0,
         locale: "zh-cn",
         defaultView: "month",
         height: "auto",
-        // timeFormat:"",
+        timeFormat:"HH:mm",
         header: {
           left: "prev",
           center: "title",
           right: "next"
         },
-        titleFormat: "YYYY/MM",
+        editable: false,
+        titleFormat: "YYYY-MM",
         eventLimit: 3,
-        eventLimitText: "更多"
-      }
+        eventLimitText: "更多",
+        height:600,
+      },
+      monthData: [
+        {
+          title: "背景颜色", // 事件内容
+          start: "2019-10-11", // 事件开始时间
+          end: "2019-10-11", // 事件结束时间
+          className:['red']  // 事件的样式   class名（由后台返回数据）
+        },
+        {
+          title: "aaa", // 事件内容
+          start: "2019-10-11", // 事件开始时间
+          end: "2019-10-11", // 事件结束时间
+          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+        },
+        {
+          title: "bbb", // 事件内容
+          start: "2019-10-11", // 事件开始时间
+          end: "2019-10-11", // 事件结束时间
+          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+        },
+        {
+          title: "ccc", // 事件内容
+          start: "2019-10-11", // 事件开始时间
+          end: "2019-10-11", // 事件结束时间
+          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+        },
+        {
+          title: "ddd", // 事件内容
+          start: "2019-10-11", // 事件开始时间
+          end: "2019-10-11", // 事件结束时间
+          cssClass: "red" // 事件的样式   class名（由后台返回数据）  red为自己定义的class名
+        },
+        {
+          title: "sssss",
+          start: "2019-10-25",
+          end: "2019-10-25",
+          cssClass: "blue"
+        },
+        {
+          title: "dddddddd",
+          start: "2019-10-09",
+          end: "2019-10-09",
+          cssClass: "blue"
+        },
+        {
+          title: "cccccc",
+          start: "2019-10-20",
+          end: "2019-10-20",
+          cssClass: "red"
+        },
+        {
+          title: "aaaaaa",
+          start: "2019-10-01",
+          end: "2019-10-01",
+          cssClass: "red"
+        },
+        {
+          title: "bbbbbb",
+          start: "2019-10-05",
+          end: "2019-10-05",
+          cssClass: "blue"
+        }
+      ],
+      
     };
   },
   methods: {
-    // 选择月份  // 切换月时的事件，可自己定义事件
-    changeMonth(start, end, current) {
-      console.log(
-        "changeMonth",
-        start.format(),
-        end.format(),
-        current.format()
-      );
-    },
     viewRender(event, jsEvent) {
-      console.log("viewRender", event, jsEvent);
-      console.log(event.title);
+      console.log("viewRender", event, jsEvent,event.title);
+      // let lastRowEle = $('.fc-row').last();
+      // let len = lastRowEle.find('.fc-content-skeleton').find('.fc-other-month').length
+      // if(len === 7){
+      //   lastRowEle.remove();
+      //   $('#fullcalendar').fullCalendar('render');
+      // }
     },
     // 点击事件  // 点击当天的事件，可自己定义事件
     eventClick(event, jsEvent, pos) {
@@ -125,8 +123,8 @@ export default {
       console.log("dayClick", day, jsEvent);
     },
     // 查看更多
-    moreClick(day, events, jsEvent) {
-      console.log("moreCLick", day, events, jsEvent);
+    moreClick(data, events, MonthView) {
+      console.log("moreCLick", data, events, MonthView);
     },
 
   },
@@ -136,10 +134,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/css/common.scss";
-.fullcalendar {
+.vueFullcalendar {
   padding-top: 20px;
-  .red {
-    background-color: red;
-  }
 }
+</style>
+<style lang="scss">
+  .vueFullcalendar{
+    .fc-button{
+      border:unset;
+      background:unset;
+      box-shadow:unset;
+      border-radius: unset;
+    }
+    .red {
+      background-color: red;
+      border-color:red;
+    }
+  }
 </style>
